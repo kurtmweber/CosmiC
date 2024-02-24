@@ -608,7 +608,7 @@ PACKAGE_STRING='FULL-PACKAGE-NAME VERSION'
 PACKAGE_BUGREPORT='BUG-REPORT-ADDRESS'
 PACKAGE_URL=''
 
-ac_unique_file="cosmic-lexer/main.c"
+ac_unique_file="config.h.in"
 ac_subst_vars='LTLIBOBJS
 LIB@&t@OBJS
 OBJEXT
@@ -3141,7 +3141,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 # Checks for library functions.
 
-ac_config_files="$ac_config_files cosmic-lexer/Makefile"
+ac_config_files="$ac_config_files Makefile cosmic-lexer/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3831,6 +3831,7 @@ for ac_config_target in $ac_config_targets
 do
   case $ac_config_target in
     "config.h") CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
+    "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "cosmic-lexer/Makefile") CONFIG_FILES="$CONFIG_FILES cosmic-lexer/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: '$ac_config_target'" "$LINENO" 5;;

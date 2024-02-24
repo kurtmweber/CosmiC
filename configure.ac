@@ -2,8 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.72])
-AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
-AC_CONFIG_SRCDIR([cosmic-lexer/main.c])
+AC_INIT([CosmiC], [0.1], [kurt.maxwell.weber@gmail.com])
+AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADERS([config.h])
 
 AM_INIT_AUTOMAKE
@@ -19,5 +19,6 @@ AC_PROG_CC
 
 # Checks for library functions.
 
-AC_CONFIG_FILES([cosmic-lexer/Makefile])
+AC_CONFIG_FILES([Makefile
+                 cosmic-lexer/Makefile])
 AC_OUTPUT
