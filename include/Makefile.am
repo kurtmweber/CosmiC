@@ -1,0 +1,1 @@
+noinst_HEADERS = cosmic-error.h

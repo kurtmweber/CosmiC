@@ -20,5 +20,6 @@ AC_PROG_CC
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
-                 cosmic-lexer/Makefile])
+                 cosmic-lexer/Makefile
+                 include/Makefile])
 AC_OUTPUT
