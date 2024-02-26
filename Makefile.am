@@ -1,1 +1,1 @@
-SUBDIRS = cosmic-lexer
+SUBDIRS = common cosmic-lexer include

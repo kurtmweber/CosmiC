@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <errno.h>
 
+#include <cosmic-error.h>
+
 FILE *open_input_file(const char *name);
 
 int main(int argc, char *argv[]) {

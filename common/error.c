@@ -5,9 +5,4 @@
  * See the file "LICENSE" in the source distribution for details *
  *****************************************************************/
 
-// cosmic-error.h: for when you've made a HUGE mistake
-
-#ifndef _COSMIC_ERROR_H
-#define _COSMIC_ERROR_H
-
-#endif
+int cosmic_error() { return 5; }

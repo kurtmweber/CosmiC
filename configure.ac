@@ -10,6 +10,7 @@ AM_INIT_AUTOMAKE
 
 # Checks for programs.
 AC_PROG_CC
+AC_PROG_RANLIB
 
 # Checks for libraries.
 
@@ -20,6 +21,7 @@ AC_PROG_CC
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
+                 common/Makefile
                  cosmic-lexer/Makefile
                  include/Makefile])
 AC_OUTPUT
