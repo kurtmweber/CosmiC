@@ -60,3 +60,5 @@ dkms.conf
 .dirstamp
 *.o
 *~
+
+build/
