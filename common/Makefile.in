@@ -256,7 +256,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 noinst_LIBRARIES = libcosmic-error.a
-libcosmic_error_a_CPPFLAGS = "-I../include"
+libcosmic_error_a_CPPFLAGS = -I../include
 libcosmic_error_a_SOURCES = error.c
 all: all-am
 

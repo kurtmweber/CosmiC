@@ -10,6 +10,8 @@
 
 #include <cosmic-error.h>
 
+cosmic_error_t cosmic_errno;
+
 FILE *open_input_file(const char *name);
 
 int main(int argc, char *argv[]) {
@@ -20,7 +22,7 @@ int main(int argc, char *argv[]) {
   if (argc == 2) {
     input = open_input_file(argv[1]);
     if (input == NULL) {
-      perror("Lexer error");
+      cosmic_perror("Lexer error");
     }
   } else {
     input = stdin;
@@ -45,6 +47,7 @@ FILE *open_input_file(const char *name) {
   fp = fopen(name, "r");
 
   if (fp == NULL) {
+    cosmic_errno = COSMIC_ERROR_FILENAME;
   }
 
   return fp; // will have been set to NULL by fopen if error

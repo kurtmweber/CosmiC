@@ -52,7 +52,7 @@ Mkfile.old
 dkms.conf
 
 # Autotools
-/Makefile
+Makefile
 /autom4te.cache/
 /m4/
 /stamp-h?
@@ -60,5 +60,8 @@ dkms.conf
 .dirstamp
 *.o
 *~
+config.log
+config.status
+config.h
 
 build/

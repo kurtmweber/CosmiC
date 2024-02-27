@@ -5,15 +5,12 @@
  * See the file "LICENSE" in the source distribution for details *
  *****************************************************************/
 
-// cosmic-error.h: for when you've made a HUGE mistake
+#ifndef _ERRORTEXT_H
+#define _ERRORTEXT_H
 
-#ifndef _COSMIC_ERROR_H
-#define _COSMIC_ERROR_H
+#include <cosmic-error.h>>
 
-typedef enum { COSMIC_ERROR_FILENAME, COSMIC_ERROR_END } cosmic_error_t;
-
-extern cosmic_error_t cosmic_errno;
-
-void cosmic_perror(const char *str);
+const char *cosmic_errmsg[] = {[COSMIC_ERROR_FILENAME] =
+                                   "Invalid filename specified"};
 
 #endif
