@@ -99,7 +99,8 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_cosmic_lexer_OBJECTS = cosmic_lexer-main.$(OBJEXT)
+am_cosmic_lexer_OBJECTS = cosmic_lexer-main.$(OBJEXT) \
+	cosmic_lexer-scan.$(OBJEXT)
 cosmic_lexer_OBJECTS = $(am_cosmic_lexer_OBJECTS)
 cosmic_lexer_DEPENDENCIES = ../common/libcosmic-error.a
 AM_V_P = $(am__v_P_@AM_V@)
@@ -117,7 +118,8 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/cosmic_lexer-main.Po
+am__depfiles_remade = ./$(DEPDIR)/cosmic_lexer-main.Po \
+	./$(DEPDIR)/cosmic_lexer-scan.Po
 am__mv = mv -f
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -252,7 +254,9 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 cosmic_lexer_CPPFLAGS = -I../include/
 cosmic_lexer_LDADD = ../common/libcosmic-error.a
-cosmic_lexer_SOURCES = main.c
+cosmic_lexer_SOURCES = main.c \
+                        scan.c
+
 all: all-am
 
 .SUFFIXES:
@@ -340,6 +344,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cosmic_lexer-main.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cosmic_lexer-scan.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -374,6 +379,20 @@ cosmic_lexer-main.obj: main.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='main.c' object='cosmic_lexer-main.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cosmic_lexer_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o cosmic_lexer-main.obj `if test -f 'main.c'; then $(CYGPATH_W) 'main.c'; else $(CYGPATH_W) '$(srcdir)/main.c'; fi`
+
+cosmic_lexer-scan.o: scan.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cosmic_lexer_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT cosmic_lexer-scan.o -MD -MP -MF $(DEPDIR)/cosmic_lexer-scan.Tpo -c -o cosmic_lexer-scan.o `test -f 'scan.c' || echo '$(srcdir)/'`scan.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cosmic_lexer-scan.Tpo $(DEPDIR)/cosmic_lexer-scan.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='scan.c' object='cosmic_lexer-scan.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cosmic_lexer_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o cosmic_lexer-scan.o `test -f 'scan.c' || echo '$(srcdir)/'`scan.c
+
+cosmic_lexer-scan.obj: scan.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cosmic_lexer_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT cosmic_lexer-scan.obj -MD -MP -MF $(DEPDIR)/cosmic_lexer-scan.Tpo -c -o cosmic_lexer-scan.obj `if test -f 'scan.c'; then $(CYGPATH_W) 'scan.c'; else $(CYGPATH_W) '$(srcdir)/scan.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cosmic_lexer-scan.Tpo $(DEPDIR)/cosmic_lexer-scan.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='scan.c' object='cosmic_lexer-scan.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cosmic_lexer_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o cosmic_lexer-scan.obj `if test -f 'scan.c'; then $(CYGPATH_W) 'scan.c'; else $(CYGPATH_W) '$(srcdir)/scan.c'; fi`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -502,6 +521,7 @@ clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
 		-rm -f ./$(DEPDIR)/cosmic_lexer-main.Po
+	-rm -f ./$(DEPDIR)/cosmic_lexer-scan.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -548,6 +568,7 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-am
 		-rm -f ./$(DEPDIR)/cosmic_lexer-main.Po
+	-rm -f ./$(DEPDIR)/cosmic_lexer-scan.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

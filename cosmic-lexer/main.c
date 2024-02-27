@@ -10,6 +10,8 @@
 
 #include <cosmic-error.h>
 
+#include "scan.h"
+
 cosmic_error_t cosmic_errno;
 
 FILE *open_input_file(const char *name);
@@ -27,6 +29,8 @@ int main(int argc, char *argv[]) {
   } else {
     input = stdin;
   }
+
+  scan(input);
 
   return 0;
 }
