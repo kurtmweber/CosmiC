@@ -5,8 +5,9 @@
  * See the file "LICENSE" in the source distribution for details *
  *****************************************************************/
 
-#include <stdio.h>
 #include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include <cosmic-error.h>
 
@@ -25,6 +26,7 @@ int main(int argc, char *argv[]) {
     input = open_input_file(argv[1]);
     if (input == NULL) {
       cosmic_perror("Lexer error");
+      exit(EXIT_FAILURE);
     }
   } else {
     input = stdin;
