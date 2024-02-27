@@ -5,6 +5,28 @@
  * See the file "LICENSE" in the source distribution for details *
  *****************************************************************/
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "scan.h"
 
-void scan(FILE *input) { return; }
+int nextchar(FILE *input);
+
+void scan(FILE *input) {
+  int ch;
+
+  while ((ch = nextchar(input)) != EOF) {
+    fputc(ch, stdout);
+  }
+
+  return;
+}
+
+int nextchar(FILE *input) {
+  int ch;
+
+  do {
+    ch = fgetc(input);
+  } while (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r' || ch == '\f');
+
+  return ch;
+}
