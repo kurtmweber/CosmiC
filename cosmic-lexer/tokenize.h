@@ -5,12 +5,13 @@
  * See the file "LICENSE" in the source distribution for details *
  *****************************************************************/
 
-#ifndef _SCAN_H
-#define _SCAN_H
+#ifndef _TOKENIZE_H
+#define _TOKENIZE_H
 
 #include <stdio.h>
 
-int next_char(FILE *input);
-void scan(FILE *input);
+#include <tokens.h>
+
+token_t *tokenize(unsigned char ch, FILE *input);
 
 #endif

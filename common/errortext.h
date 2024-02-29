@@ -8,7 +8,7 @@
 #ifndef _ERRORTEXT_H
 #define _ERRORTEXT_H
 
-#include <cosmic-error.h>>
+#include <cosmic-error.h>
 
 const char *cosmic_errmsg[] = {[COSMIC_ERROR_FILENAME] =
                                    "Invalid filename specified"};

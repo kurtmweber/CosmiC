@@ -14,6 +14,7 @@
 
 @SET_MAKE@
 
+
 VPATH = @srcdir@
 am__is_gnu_make = { \
   if test -z '$(MAKELEVEL)'; then \
@@ -92,7 +93,8 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
-DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
+DIST_COMMON = $(srcdir)/Makefile.am $(noinst_HEADERS) \
+	$(am__DIST_COMMON)
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
@@ -100,7 +102,7 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_cosmic_lexer_OBJECTS = cosmic_lexer-main.$(OBJEXT) \
-	cosmic_lexer-scan.$(OBJEXT)
+	cosmic_lexer-scan.$(OBJEXT) cosmic_lexer-tokenize.$(OBJEXT)
 cosmic_lexer_OBJECTS = $(am_cosmic_lexer_OBJECTS)
 cosmic_lexer_DEPENDENCIES = ../common/libcosmic-error.a
 AM_V_P = $(am__v_P_@AM_V@)
@@ -119,7 +121,8 @@ DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
 am__depfiles_remade = ./$(DEPDIR)/cosmic_lexer-main.Po \
-	./$(DEPDIR)/cosmic_lexer-scan.Po
+	./$(DEPDIR)/cosmic_lexer-scan.Po \
+	./$(DEPDIR)/cosmic_lexer-tokenize.Po
 am__mv = mv -f
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -144,6 +147,7 @@ am__can_run_installinfo = \
     n|no|NO) false;; \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
+HEADERS = $(noinst_HEADERS)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
 # and print each of them once, without duplicates.  Input order is
@@ -255,7 +259,11 @@ top_srcdir = @top_srcdir@
 cosmic_lexer_CPPFLAGS = -I../include/
 cosmic_lexer_LDADD = ../common/libcosmic-error.a
 cosmic_lexer_SOURCES = main.c \
-                        scan.c
+                        scan.c \
+                        tokenize.c
+
+noinst_HEADERS = scan.h \
+                    tokenize.h
 
 all: all-am
 
@@ -345,6 +353,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cosmic_lexer-main.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cosmic_lexer-scan.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cosmic_lexer-tokenize.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -393,6 +402,20 @@ cosmic_lexer-scan.obj: scan.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='scan.c' object='cosmic_lexer-scan.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cosmic_lexer_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o cosmic_lexer-scan.obj `if test -f 'scan.c'; then $(CYGPATH_W) 'scan.c'; else $(CYGPATH_W) '$(srcdir)/scan.c'; fi`
+
+cosmic_lexer-tokenize.o: tokenize.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cosmic_lexer_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT cosmic_lexer-tokenize.o -MD -MP -MF $(DEPDIR)/cosmic_lexer-tokenize.Tpo -c -o cosmic_lexer-tokenize.o `test -f 'tokenize.c' || echo '$(srcdir)/'`tokenize.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cosmic_lexer-tokenize.Tpo $(DEPDIR)/cosmic_lexer-tokenize.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='tokenize.c' object='cosmic_lexer-tokenize.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cosmic_lexer_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o cosmic_lexer-tokenize.o `test -f 'tokenize.c' || echo '$(srcdir)/'`tokenize.c
+
+cosmic_lexer-tokenize.obj: tokenize.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cosmic_lexer_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT cosmic_lexer-tokenize.obj -MD -MP -MF $(DEPDIR)/cosmic_lexer-tokenize.Tpo -c -o cosmic_lexer-tokenize.obj `if test -f 'tokenize.c'; then $(CYGPATH_W) 'tokenize.c'; else $(CYGPATH_W) '$(srcdir)/tokenize.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cosmic_lexer-tokenize.Tpo $(DEPDIR)/cosmic_lexer-tokenize.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='tokenize.c' object='cosmic_lexer-tokenize.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cosmic_lexer_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o cosmic_lexer-tokenize.obj `if test -f 'tokenize.c'; then $(CYGPATH_W) 'tokenize.c'; else $(CYGPATH_W) '$(srcdir)/tokenize.c'; fi`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -480,7 +503,7 @@ distdir-am: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(PROGRAMS)
+all-am: Makefile $(PROGRAMS) $(HEADERS)
 installdirs:
 	for dir in "$(DESTDIR)$(bindir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
@@ -522,6 +545,7 @@ clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 distclean: distclean-am
 		-rm -f ./$(DEPDIR)/cosmic_lexer-main.Po
 	-rm -f ./$(DEPDIR)/cosmic_lexer-scan.Po
+	-rm -f ./$(DEPDIR)/cosmic_lexer-tokenize.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -569,6 +593,7 @@ installcheck-am:
 maintainer-clean: maintainer-clean-am
 		-rm -f ./$(DEPDIR)/cosmic_lexer-main.Po
 	-rm -f ./$(DEPDIR)/cosmic_lexer-scan.Po
+	-rm -f ./$(DEPDIR)/cosmic_lexer-tokenize.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

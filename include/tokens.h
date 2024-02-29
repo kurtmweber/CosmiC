@@ -5,12 +5,22 @@
  * See the file "LICENSE" in the source distribution for details *
  *****************************************************************/
 
-#ifndef _SCAN_H
-#define _SCAN_H
+#ifndef _TOKENS_H
+#define _TOKENS_H
 
-#include <stdio.h>
+typedef enum token_type_t {
+  TOKEN_PLUS,
+  TOKEN_MINUS,
+  TOKEN_ASTERISK,
+  TOKEN_SLASH,
+  TOKEN_INTEGER_LITERAL
+} token_type_t;
 
-int next_char(FILE *input);
-void scan(FILE *input);
+typedef struct token_t {
+  token_type_t type;
+  union {
+    int intval;
+  };
+} token_t;
 
 #endif
