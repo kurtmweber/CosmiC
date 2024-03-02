@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
       exit(EXIT_FAILURE);
     }
   } else {
-    freopen(NULL, "r+", stdin);
+    freopen(NULL, "r", stdin);
     input = stdin;
   }
 
@@ -51,8 +51,7 @@ FILE *open_input_file(const char *name) {
 
   FILE *fp;
 
-  fp = fopen(name, "r+"); // needs to be open for writing as well as reading so
-                          // we can use fputc() on it when needed
+  fp = fopen(name, "r");
 
   if (fp == NULL) {
     cosmic_errno = COSMIC_ERROR_FILENAME;
