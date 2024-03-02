@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 
 #include <tokens.h>
 
@@ -47,6 +48,7 @@ token_t *tokenize(unsigned char ch, FILE *input) {
     *curtok = numeric_token(ch, input);
     break;
   default:
+    printf("Invalid token %c\n", ch);
     break;
   }
 
@@ -55,12 +57,22 @@ token_t *tokenize(unsigned char ch, FILE *input) {
 
 token_t numeric_token(unsigned char ch, FILE *input) {
   token_t tmp;
-  unsigned int digit;
+  unsigned char cur = ch;
+  unsigned int digit = 0;
+  unsigned int val = 0;
 
-  while ((digit = find_digit(ch)) <= 9) {
-    printf("%d\n", digit);
-    ch = (unsigned char)next_char(input);
+  while ((digit = find_digit(cur)) <= 9) {
+    val = (val * 10) + digit;
+    cur = (unsigned char)next_char(input);
   }
+
+  if (ungetc(cur, input) == EOF) {
+    perror("EOF fputc");
+    exit(EXIT_FAILURE);
+  }
+
+  tmp.type = TOKEN_INTEGER_LITERAL;
+  tmp.intval = val;
 
   return tmp;
 }
