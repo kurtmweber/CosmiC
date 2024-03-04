@@ -10,7 +10,8 @@
 
 #include <cosmic-error.h>
 
-const char *cosmic_errmsg[] = {[COSMIC_ERROR_FILENAME] =
-                                   "Invalid filename specified"};
+const char *cosmic_errmsg[] = {
+    [COSMIC_ERROR_FILENAME] = "Invalid filename specified",
+    [COSMIC_ERROR_STREAM] = "Error manipulating input data stream"};
 
 #endif

@@ -7,8 +7,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
 
+#include <cosmic-error.h>
 #include <tokens.h>
 
 #include "scan.h"
@@ -67,7 +67,8 @@ token_t numeric_token(unsigned char ch, FILE *input) {
   }
 
   if (ungetc(cur, input) == EOF) {
-    perror("EOF fputc");
+    cosmic_errno = COSMIC_ERROR_STREAM;
+    cosmic_perror("Could not ungetc, " __FILE__ " at line " COSMIC_LINENO);
     exit(EXIT_FAILURE);
   }
 

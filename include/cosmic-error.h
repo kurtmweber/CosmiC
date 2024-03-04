@@ -10,7 +10,15 @@
 #ifndef _COSMIC_ERROR_H
 #define _COSMIC_ERROR_H
 
-typedef enum { COSMIC_ERROR_FILENAME, COSMIC_ERROR_END } cosmic_error_t;
+#define _COSMIC_INTERNAL_STRINGIFY(x) #x
+#define COSMIC_STRINGIFY(x) _COSMIC_INTERNAL_STRINGIFY(x)
+#define COSMIC_LINENO COSMIC_STRINGIFY(__LINE__)
+
+typedef enum {
+  COSMIC_ERROR_FILENAME,
+  COSMIC_ERROR_STREAM,
+  COSMIC_ERROR_END
+} cosmic_error_t;
 
 extern cosmic_error_t cosmic_errno;
 
