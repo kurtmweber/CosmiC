@@ -5,6 +5,8 @@
  * See the file "LICENSE" in the source distribution for details *
  *****************************************************************/
 
+#define LEXER
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -48,7 +50,7 @@ token_t *tokenize(unsigned char ch, FILE *input) {
     *curtok = numeric_token(ch, input);
     break;
   default:
-    printf("Invalid token %c\n", ch);
+    LEXER_ERROR("invalid token", 0, "");
     break;
   }
 

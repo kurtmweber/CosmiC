@@ -1,3 +1,5 @@
+AM_CFLAGS = -DLEXER
+
 bin_PROGRAMS = cosmic-lexer
 
 cosmic_lexer_CPPFLAGS = -I../include/

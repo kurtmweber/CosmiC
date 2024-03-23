@@ -256,6 +256,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+AM_CFLAGS = -DLEXER
 cosmic_lexer_CPPFLAGS = -I../include/
 cosmic_lexer_LDADD = ../common/libcosmic-error.a
 cosmic_lexer_SOURCES = main.c \

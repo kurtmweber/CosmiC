@@ -14,6 +14,11 @@
 #define COSMIC_STRINGIFY(x) _COSMIC_INTERNAL_STRINGIFY(x)
 #define COSMIC_LINENO COSMIC_STRINGIFY(__LINE__)
 
+#ifdef LEXER
+#define LEXER_ERROR(message, line, file)                                       \
+  compilar_error("Lexer error: " message, line, file)
+#endif
+
 typedef enum {
   COSMIC_ERROR_FILENAME,
   COSMIC_ERROR_STREAM,
